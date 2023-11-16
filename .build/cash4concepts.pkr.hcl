@@ -21,7 +21,7 @@ build {
   }
 
   provisioner "shell" {
-    inline = ["ls -lah /usr/share/nginx/html"]
+    inline = ["rm -rf /usr/share/nginx/html/.build", "rm -rf /usr/share/nginx/html/.github", "rm -rf /usr/share/nginx/html/.git"]
   }
 
   post-processors {
