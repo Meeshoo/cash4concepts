@@ -21,7 +21,7 @@ build {
   }
 
   provisioner "shell" {
-    inline = ["ls /usr/share/nginx/html"]
+    inline = ["ls -lah /usr/share/nginx/html"]
   }
 
   post-processors {
