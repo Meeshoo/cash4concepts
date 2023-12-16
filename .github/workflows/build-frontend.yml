@@ -25,11 +25,6 @@ jobs:
         run: sudo packer plugins install github.com/hashicorp/docker
 
       - uses: actions/checkout@v1
-
-      - name: Debug
-        run: echo $AWS_ACCESS_KEY_ID
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       
       - name: Packer build
         run: cd .build && sudo packer build cash4concepts.pkr.hcl
@@ -37,3 +32,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: eu-west-1
+          
