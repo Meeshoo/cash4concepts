@@ -29,14 +29,15 @@ jobs:
 
       - uses: actions/checkout@v1
 
-      - uses: Fooji/create-aws-profile-action@v1
-        with:
-          profile: default
-          region: eu-west-1
-          key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-1est-1
+        role-duration-seconds: 1200
       
       - name: Packer build
-        run: cd .build && packer build cash4concepts.pkr.hcl
+        run: cd .build && sudo packer build cash4concepts.pkr.hcl
         env:
           AWS_DEFAULT_REGION: eu-west-1
