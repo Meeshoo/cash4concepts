@@ -37,6 +37,6 @@ jobs:
           secret: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       
       - name: Packer build
-        run: cd .build && sudo packer build cash4concepts.pkr.hcl
+        run: cd .build && packer build cash4concepts.pkr.hcl
         env:
           AWS_DEFAULT_REGION: eu-west-1
