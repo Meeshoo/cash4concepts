@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Change Packer TMP dir
+        run: PACKER_TMP_DIR=/tmp/
+
       - name: Add Packer key
         run: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 
