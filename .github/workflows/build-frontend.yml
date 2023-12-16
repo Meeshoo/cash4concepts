@@ -12,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Change Packer TMP dir
-        run: export PACKER_TMP_DIR="/tmp/"
-
       - name: Add Packer key
         run: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 
@@ -28,9 +25,14 @@ jobs:
         run: sudo packer plugins install github.com/hashicorp/docker
 
       - uses: actions/checkout@v1
+
+      - name: Debug
+        run: echo $AWS_ACCESS_KEY_ID
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       
       - name: Packer build
-        run: cd .build && packer build cash4concepts.pkr.hcl
+        run: cd .build && sudo packer build cash4concepts.pkr.hcl
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
