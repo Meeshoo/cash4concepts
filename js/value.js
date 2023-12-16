@@ -1,61 +1,17 @@
-const uniqueHash = function (str, seed = 0) {
-  let h1 = 0xdeadbeef ^ seed,
-    h2 = 0x41c6ce57 ^ seed;
-  for (let i = 0, ch; i < str.length; i++) {
-    ch = str.charCodeAt(i);
-    h1 = Math.imul(h1 ^ ch, 2654435761);
-    h2 = Math.imul(h2 ^ ch, 1597334677);
-  }
-  h1 =
-    Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^
-    Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-  h2 =
-    Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^
-    Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-  return 4294967296 * (2097151 & h2) + (h1 >>> 0);
-};
+let chance = Math.floor(Math.random() * 100);
 
-const sumDigits = function (integerToSum) {
-    const res = [];
-    while(integerToSum){
-       const last = integerToSum % 10;
-       res.unshift(last);
-       integerToSum = Math.floor(integerToSum / 10);
-    };
-    var total = 0;
-    for (let i = 0; i < res.length; i++) {
-      var total = total + res[i]
-    }
-    return total;
-};
-
-let input = "highconcepttime3";
-
-let hash = uniqueHash(input);
-
-console.log(hash);
-
-let firstDigit = String(hash)[0];
-
-console.log(firstDigit);
-
-let sum = sumDigits(hash);
-
-console.log(sum);
-
-if (firstDigit < 6) {
-  var value = sumDigits(hash) / 2;
-} else if (firstDigit < 8) {
-  var value = sumDigits(hash) * 17;
+if (chance < 60) {
+  var value = Math.floor(Math.random() * 51);
+} else if (chance < 90) {
+  var value = Math.floor(Math.random() * 10001);
 } else {
-  var value = sumDigits(hash) * 49107;
+  var value = Math.floor(Math.random() * 100000001);
 }
 
-// Sum all digits together in some way to get the result
+let pennies = Math.floor(Math.random() * 99);
 
 let value_pretty = value.toLocaleString("en-US");
 
-// document.getElementById("id-concept").innerHTML =
-//   "$" + value_pretty;
-
-console.log(value_pretty)
+document.getElementById("id-concept").innerHTML =
+  "$" + value_pretty + "." + pennies;
+  
