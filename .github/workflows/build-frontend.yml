@@ -40,11 +40,6 @@ jobs:
           run: |
             sudo echo -e "[default]\n" >> /root/.aws/config; \
               sudo echo -e "region = eu-west-1\n" >> /root/.aws/credentials;
-
-
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          ${{ secrets.AWS_ACCESS_KEY_ID }}
-
       
       - name: Packer build
         run: cd .build && sudo packer build cash4concepts.pkr.hcl
