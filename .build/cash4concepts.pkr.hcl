@@ -25,10 +25,6 @@ build {
   }
 
   post-processors {
-    post-processor "docker-import" {
-      repository = "local/cash4concepts"
-      tag = "latest"
-    }
 
     post-processor "docker-tag" {
       repository = "550661752655.dkr.ecr.eu-west-1.amazonaws.com/cash4concepts"
