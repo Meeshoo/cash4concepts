@@ -30,16 +30,10 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Configure AWS credentials
-          run: >
-            sudo mkdir /root/.aws; \
-            sudo echo -e "[default]\n" >> /root/.aws/credentials; \
-            sudo echo -e "aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}\n" >> /root/.aws/credentials; \
-            sudo echo -e "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n" >> /root/.aws/credentials;
+          run: sudo mkdir /root/.aws; sudo echo -e "[default]\n" >> /root/.aws/credentials; sudo echo -e "aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}\n" >> /root/.aws/credentials; sudo echo -e "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n" >> /root/.aws/credentials;
 
       - name: Configure AWS config
-          run: >
-            sudo echo -e "[default]\n" >> /root/.aws/config; \
-            sudo echo -e "region = eu-west-1\n" >> /root/.aws/credentials;
+          run: sudo echo -e "[default]\n" >> /root/.aws/config; sudo echo -e "region = eu-west-1\n" >> /root/.aws/credentials;
       
       - name: Packer build
         run: cd .build && sudo packer build cash4concepts.pkr.hcl
