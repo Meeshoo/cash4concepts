@@ -27,7 +27,7 @@ build {
   post-processors {
 
     post-processor "docker-tag" {
-      repository = "550661752655.dkr.ecr.eu-west-1.amazonaws.com/cash4concepts"
+      repository = "550661752655.dkr.ecr.eu-west-1.amazonaws.com/mitlan/cash4concepts"
       tags       = ["latest"]
     }
 
@@ -35,7 +35,7 @@ build {
       ecr_login = true
       aws_access_key = var.access_key
       aws_secret_key = var.secret_key
-      login_server = "https://550661752655.dkr.ecr.eu-west-1.amazonaws.com"
+      login_server = "https://550661752655.dkr.ecr.eu-west-1.amazonaws.com/mitlan"
     }
   }
 }
