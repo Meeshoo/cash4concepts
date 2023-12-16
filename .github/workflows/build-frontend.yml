@@ -24,10 +24,10 @@ jobs:
       - name: Install Docker plugin for Packer
         run: sudo packer plugins install github.com/hashicorp/docker
 
-      - name: Install AWS plugin for Packer
-        run: sudo packer plugins install github.com/hashicorp/amazon
-
       - uses: actions/checkout@v1
+
+      - name: Export environmental vars
+        run: export AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" && export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
       
       - name: Packer build
         run: cd .build && sudo packer build cash4concepts.pkr.hcl
