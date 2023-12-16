@@ -27,7 +27,7 @@ build {
   post-processors {
 
     post-processor "docker-tag" {
-      repository = "550661752655.dkr.ecr.eu-west-1.amazonaws.com/mitlan/cash4concepts"
+      repository = "550661752655.dkr.ecr.eu-west-1.amazonaws.com/cash4concepts"
       tags       = ["latest"]
     }
 
